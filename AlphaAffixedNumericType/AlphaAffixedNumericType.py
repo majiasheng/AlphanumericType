@@ -1,5 +1,10 @@
-import re
+import sys
+import os
+sys.path.append(os.path.dirname(__file__))
+
 from .exceptions import NumericArithmeticException
+import re
+
 
 class AlphaAffixedNumericType():
     '''
@@ -12,6 +17,7 @@ class AlphaAffixedNumericType():
     INDEX_OF_POSTFIX_GROUP = 2
 
     def __init__(self, aant):
+        # TODO: add variable to keep number of digits?
         self.mo = re.match(AlphaAffixedNumericType.ALPHA_AFFIXED_NUMERIC_TYPE_REGEX, aant)
         assert aant.isalnum(), f'String "{aant}" is not alphanumeric'
         assert self.mo, f'String "{aant}" is not affixed'
