@@ -1,7 +1,9 @@
 import re
+from .exceptions import NumericArithmeticException
 
-class AlphaAffixedNumericType(): # 'aant' for short
+class AlphaAffixedNumericType():
     '''
+    NOTE: 'aant' for short
     Support arithmetic with different data types
     '''
     ALPHA_AFFIXED_NUMERIC_TYPE_REGEX = r"^([a-zA-Z]*)(\d+)([a-zA-Z]*)$"
@@ -14,7 +16,7 @@ class AlphaAffixedNumericType(): # 'aant' for short
         assert aant.isalnum(), f'String "{aant}" is not alphanumeric'
         assert self.mo, f'String "{aant}" is not affixed'
         self.aant = aant
-    
+
     def get_value(self):
         return self.aant
 
@@ -105,7 +107,7 @@ class AlphaAffixedNumericType(): # 'aant' for short
         elif type_of_other == str or type_of_other == int:
             diff = int(self.get_numeric_part_of_aant()) - int(other)
             if diff < 0:
-                raise Exception(f'{self} is less than {other}')
+                raise NumericArithmeticException(f'Numeric part of "{self.get_value()}" is less than {other}')
 
             return AlphaAffixedNumericType(
                 self.get_prefix_part_of_aant() + \
@@ -116,4 +118,7 @@ class AlphaAffixedNumericType(): # 'aant' for short
             raise Exception(f'Invalid operand {other}')
 
     def __repr__(self):
+        return f'{self.__class__} - <value {self.aant}>'
+    
+    def __str__(self):
         return self.aant
