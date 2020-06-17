@@ -15,6 +15,7 @@ Download from pypi:
 `pip3 install AlphaAffixedNumericType==0.1.0`
 
 Sample usage:
+
 ```python
 from AlphaAffixedNumericType import AlphaAffixedNumericType
 
