@@ -10,6 +10,11 @@ Python data type to support arithmetics on alphanumeric string
     `aant - [integer|aant]`
 
 ## How to Use
+Download from pypi: 
+
+`pip3 install AlphaAffixedNumericType==0.1.0`
+
+Sample usage:
 
 ```python
 from AlphaAffixedNumericType import AlphaAffixedNumericType
